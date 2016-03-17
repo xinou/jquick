@@ -1,0 +1,37 @@
+#set($layout="layout/nolayout.html")
+<!DOCTYPE html>
+<html>
+<head>
+<title>首页</title>
+</head>
+<body>
+	<div ng-app="loginApp">
+		<div ng-controller="loginCtrl">
+			<form>
+				<input type="text" name="userName" ng-model="user.userName" /> <input
+					type="text" name="passWord" ng-model="user.passWord" /> <input
+					type="button" name="login" value="登录" ng-click="login();" />
+			</form>
+		</div>
+	</div>
+	<script src="js/angular/angular.js"></script>
+	<script>
+		var loginApp = angular.module("loginApp", []);
+		loginApp.controller("loginCtrl", function($scope, $http) {
+			$scope.user = {
+				"userName" : "ouxin",
+				"passWord" : "123456"
+			};
+			$scope.login = function() {
+				var user = $scope.user;
+				console.log(user);
+				$http.post({
+					method : "post",
+					url : "http://localhost:8080/front/user/login",
+					data : user
+				});
+			}
+		});
+	</script>
+</body>
+</html>
