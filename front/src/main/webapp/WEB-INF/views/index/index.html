@@ -1,7 +1,8 @@
-#set($layout="layout/nolayout.html")
+<#assign base=request.contextPath />
 <!DOCTYPE html>
 <html>
 <head>
+<base id="base" href="${base}">
 <title>首页</title>
 </head>
 <body>
@@ -9,27 +10,26 @@
 		<div ng-controller="loginCtrl">
 			<form>
 				<input type="text" name="userName" ng-model="user.userName" /> <input
-					type="text" name="passWord" ng-model="user.passWord" /> <input
+					type="text" name="userPwd" ng-model="user.userPwd" /> <input
 					type="button" name="login" value="登录" ng-click="login();" />
 			</form>
 		</div>
 	</div>
-	<script src="js/angular/angular.js"></script>
+	<script src="${base}/js/angular/angular.js"></script>
 	<script>
 		var loginApp = angular.module("loginApp", []);
 		loginApp.controller("loginCtrl", function($scope, $http) {
 			$scope.user = {
 				"userName" : "ouxin",
-				"passWord" : "123456"
+				"userPwd" : "123456"
 			};
 			$scope.login = function() {
 				var user = $scope.user;
 				console.log(user);
-				$http.post({
-					method : "post",
-					url : "http://localhost:8080/front/user/login",
-					data : user
-				});
+				$http.post("${base}/user/login.do", null).success(
+						function(data) {
+							debugger
+						});
 			}
 		});
 	</script>

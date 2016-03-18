@@ -18,7 +18,7 @@
 				/css/** = anon
 				/js/** = anon
 				<!-- 登录页允许访问 -->
-				/services/user/login = anon
+				/user/** = anon
 				<!-- 首页允许访问 -->
 				/index = anon
 				<!-- 其他资源需要认证 -->
