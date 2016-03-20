@@ -26,7 +26,7 @@
 			$scope.login = function() {
 				var user = $scope.user;
 				console.log(user);
-				$http.post("${base}/user/login.do", null).success(
+				$http.post("${base}/user/login.do", user).success(
 						function(data) {
 							debugger
 						});

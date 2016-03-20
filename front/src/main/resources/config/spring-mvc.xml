@@ -32,6 +32,10 @@
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Service" />
 	</context:component-scan>
+	<!-- mvc拦截器链配置,处理返回数据 -->
+	<mvc:interceptors>
+		<bean id="httpResponseInterceptor" class="cn.jquick.it.framework.interceptor.HttpResponseInterceptor"></bean>
+	</mvc:interceptors>
 	<!--避免IE执行AJAX时，返回JSON出现下载文件 -->
 	<bean id="mappingJacksonHttpMessageConverter"
 		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">

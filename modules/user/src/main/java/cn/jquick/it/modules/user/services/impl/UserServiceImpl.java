@@ -8,15 +8,31 @@ import javax.inject.Named;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
+import cn.jquick.it.common.model.user.req.FindUserReq;
+import cn.jquick.it.common.model.user.resp.User;
 import cn.jquick.it.common.model.user.table.TUser;
 import cn.jquick.it.modules.user.dao.IUserDao;
 import cn.jquick.it.modules.user.services.IUserService;
 
+/** 
+ * 用户管理实现类
+ * <功能详细描述> 
+ * 
+ * @author  ouxin 
+ * @version  [版本号, 2016年3月20日] 
+ */
 @Named("userServiceImpl")
 public class UserServiceImpl implements IUserService
 {
     @Inject
     private IUserDao userDao;
+    
+    @Override
+    public User findUser(FindUserReq req)
+        throws Exception
+    {
+        return userDao.findUser(req);
+    }
     
     @SuppressWarnings({"unchecked", "rawtypes"})
     public void insertUser()
