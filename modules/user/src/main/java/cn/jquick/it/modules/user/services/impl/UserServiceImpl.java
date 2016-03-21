@@ -5,6 +5,10 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
+
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -26,6 +30,26 @@ public class UserServiceImpl implements IUserService
 {
     @Inject
     private IUserDao userDao;
+    
+    @Override
+    public User login(FindUserReq req)
+        throws Exception
+    {
+        User user = null;
+        Subject subject = SecurityUtils.getSubject();
+        //用户已登录,缓存中获取用户信息返回
+        if (null != subject && subject.isAuthenticated())
+        {
+            user = (User)subject.getPrincipal();
+        }
+        else
+        {
+            UsernamePasswordToken token = new UsernamePasswordToken(req.getUserName(), req.getUserPwd());
+            token.setRememberMe(true);
+            subject.login(token);
+        }
+        return user;
+    }
     
     @Override
     public User findUser(FindUserReq req)

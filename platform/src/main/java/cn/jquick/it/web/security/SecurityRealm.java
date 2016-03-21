@@ -56,11 +56,13 @@ public class SecurityRealm extends AuthorizingRealm
         {
             log.error("用户登录失败");
         }
+        //认证失败
         if (null == user)
         {
             throw new AuthenticationException("用户名或密码错误.");
         }
-        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(userName, userPwd, getName());
+        //认证成功,将用户信息放入缓存
+        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user, token, getName());
         return authenticationInfo;
     }
     

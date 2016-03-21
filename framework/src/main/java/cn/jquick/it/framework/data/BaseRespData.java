@@ -1,6 +1,6 @@
 package cn.jquick.it.framework.data;
 
-public class RespData
+public class BaseRespData
 {
     private String code;
     

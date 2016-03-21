@@ -39,7 +39,7 @@ public class SecurityRealm extends AuthorizingRealm
         String userName = String.valueOf(token.getPrincipal());
         //密码
         String userPwd = String.valueOf((char[])token.getCredentials());
-        String json = HttpClientUtil.doHttpRequest("/user/find", new FindUserReq(userName, userPwd));
+        String json = HttpClientUtil.doHttpRequest("/user/login", new FindUserReq(userName, userPwd));
         JSONObject jsonObj = JSON.parseObject(json);
         if (null != jsonObj)
         {

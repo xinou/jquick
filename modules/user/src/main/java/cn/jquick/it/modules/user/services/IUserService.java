@@ -18,6 +18,20 @@ import cn.jquick.it.common.model.user.resp.User;
  */
 public interface IUserService
 {
+    
+    /** 
+     *用户登录 
+     *<功能详细描述>
+     * @param req
+     * @return
+     * @throws Exception 
+     */
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/login")
+    public User login(FindUserReq req)
+        throws Exception;
+        
     /** 
      *查询用户信息 
      *<功能详细描述>
