@@ -1,17 +1,15 @@
+<#assign path=request.contextPath />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>$page_title</title>
+<link rel="stylesheet" href="${path}/css/bootstrap/bootstrap.css">
+<script src="${path}/js/jquery/jquery.js"></script>
+<script src="${path}/js/bootstrap/bootstrap.js"></script>
+<script src="${path}/js/angular/angular.js"></script>
 </head>
 <body>
-	<div class="content">
-		#parse("layout/header.html")
-		<div class="content-info">
-			#parse("layout/leftMenu.html")
-			<div class="content-main">$screen_content</div>
-		</div>
-		#parse("layout/footer.html")
-	</div>
+	<!-- 导航栏 -->
+	<#include "layout/nav.html"/>
 </body>
 </html>
