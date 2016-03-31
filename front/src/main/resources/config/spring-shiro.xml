@@ -5,12 +5,12 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 	<description>apache shiro配置</description>
- 	<bean id="securityRealm" class="cn.jquick.it.web.security.SecurityRealm"/>
+ 	<bean id="securityRealm" class="cn.jquick.it.front.security.SecurityRealm"/>
  	<!-- shiro过滤器 -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
-		<property name="loginUrl" value="/index" />
-		<property name="successUrl" value="/rest/index" />
+		<property name="loginUrl" value="/user/login.html" />
+		<property name="successUrl" value="/index.html" />
 		<property name="unauthorizedUrl" value="/rest/page/401" />
 		<property name="filterChainDefinitions">
 			<value>
@@ -18,9 +18,10 @@
 				/css/** = anon
 				/js/** = anon
 				<!-- 登录页允许访问 -->
+				/user/login.html = anon
 				/user/login.do = anon
 				<!-- 首页允许访问 -->
-				/index = anon
+				/index.html = anon
 				<!-- 其他资源需要认证 -->
 				/** = authc
 			</value>

@@ -1,4 +1,4 @@
-package cn.jquick.it.web.controller.user;
+package cn.jquick.it.front.controller.user;
 
 import javax.validation.Valid;
 import javax.ws.rs.Produces;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import cn.jquick.it.common.model.user.req.FindUserReq;
 
@@ -32,10 +33,9 @@ public class UserController
      *<功能详细描述>
      * @return 
      */
-    //@RequestMapping("/login.html")
+    @RequestMapping("/login.html")
     public String showLogin()
     {
-        System.err.println("login.html");
         return "user/login";
     }
     
@@ -51,13 +51,17 @@ public class UserController
     {
         Subject subject = SecurityUtils.getSubject();
         //已经登录,跳转到首页
-        if(null != subject && subject.isAuthenticated()){
-            return "user/register";
+        if (null != subject && subject.isAuthenticated())
+        {
+            return "/index.html";
         }
-        UsernamePasswordToken token = new UsernamePasswordToken(req.getUserName(), req.getUserPwd());
-        token.setRememberMe(true);
-        subject.login(token);
-        return null;
+        else
+        {
+            UsernamePasswordToken token = new UsernamePasswordToken(req.getUserName(), req.getUserPwd());
+            token.setRememberMe(true);
+            subject.login(token);
+        }
+        return "/index.html";
     }
     
     /** 

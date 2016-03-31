@@ -9,25 +9,21 @@
 <script src="${path}/js/angular/angular.js"></script>
 </head>
 <body>
-	<!-- 导航栏 -->
-	<div id="topNavDiv">
-	<#include "layout/nav.html"/>
-	</div>
-	<!-- 内容 -->
 	<div class="container">
+		<!-- 导航栏 -->
+		<div class="row">
+			<div class="col-md-12">
+				<#include "layout/nav.html"/>
+			</div>
+		</div>
 		<div class="row">
 			<!-- 侧边栏 -->
-			<div id="leftMenuDiv" class="span2">
-			<#include "layout/leftMenu.html"/>
+			<div class="col-md-3">
+				<#include "layout/leftMenu.html"/>
 			</div>
-			<!-- 内容 -->
-			<div class="panel panel-default">
-		   		<div class="panel-heading">
-		      		不带 title 的面板标题
-		   		</div>
-		   		<div class="panel-body">
-		      		${contentBody}
-		   		</div>
+			<!-- 内容块 -->
+			<div class="col-md-9">
+				${contentBody}
 			</div>
 		</div>
 	</div>

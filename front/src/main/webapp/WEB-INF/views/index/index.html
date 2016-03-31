@@ -2,13 +2,12 @@
 <div ng-app="loginApp">
 	<div ng-controller="loginCtrl">
 		<form>
-			<input type="text" name="userName" ng-model="user.userName" /> <input
-				type="text" name="userPwd" ng-model="user.userPwd" /> <input
-				type="button" name="login" value="登录" ng-click="login();" />
+			<input type="text" name="userName" ng-model="user.userName" /> 
+			<input type="text" name="userPwd" ng-model="user.userPwd" /> 
+			<input type="button" name="login" value="登录" ng-click="login();" class="btn"/>
 		</form>
 	</div>
 </div>
-<script src="${base}/js/angular/angular.js"></script>
 <script>
 	var loginApp = angular.module("loginApp", []);
 	loginApp.controller("loginCtrl", function($scope, $http) {
@@ -19,11 +18,11 @@
 		$scope.login = function() {
 			var user = $scope.user;
 			console.log(user);
-			$http.post("${base}/user/login.do", user).success(function(data) {
+			$http.post("${path}/user/login.do", user).success(function(data) {
 				debugger
 			});
 		}
 	});
 </script>
 </#assign>
-<#include "layout/layout.html"/>
+<#include "layout/homeLayout.html"/>

@@ -1,4 +1,4 @@
-package cn.jquick.it.web.controller.index;
+package cn.jquick.it.front.controller.index;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +18,7 @@ public class IndexController
      *<功能详细描述>
      * @return 
      */
-    @RequestMapping("/index")
+    @RequestMapping("/index.html")
     public String index()
     {
         return "index/index";

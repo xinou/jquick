@@ -1,4 +1,4 @@
-package cn.jquick.it.web.security;
+package cn.jquick.it.front.security;
 
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
